@@ -2,12 +2,12 @@ program: train.py
 method: bayes
 metric:
   goal: minimize
-  name: loss
+  name: train/loss
 parameters:
   batch_size:
-    values: [8, 16, 32, 64]
+    values: [1,2,4,6,8]
   learning_rate:
-    values: [0.001, 0.005, 0.0005]
+    values: [0.001, 0.005, 0.0005, 0.00005]
 early_terminate:
   type: hyperband
   s: 2

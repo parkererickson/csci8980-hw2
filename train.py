@@ -15,11 +15,11 @@ import transformers
 import wandb
 
 hyperparameter_defaults = dict(
-    batch_size = 16,
-    learning_rate = 2e-5,
+    batch_size = 12,
+    learning_rate = 5e-5,
 )
 
-wandb.init(config=hyperparameter_defaults, project="pytorch-cnn-fashion")
+wandb.init(config=hyperparameter_defaults, project="squad-finetune-bert")
 config = wandb.config
 
 def main():
