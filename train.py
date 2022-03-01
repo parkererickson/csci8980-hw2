@@ -566,6 +566,14 @@ def main():
         formatted_predictions = [{"id": k, "prediction_text": v} for k, v in final_predictions.items()]
     references = [{"id": ex["id"], "answers": ex["answers"]} for ex in datasets["validation"]]
     res = metric.compute(predictions=formatted_predictions, references=references)
+
+    save_outputs = {"predictions": formatted_predictions, "references": references, "raw_predictions": raw_predictions, "dataset": datasets["validation"]}
+
+    # Added for HW3
+    import pickle as pkl
+    with open("./outputs.pkl", "wb") as f:
+        pkl.dump(save_outputs, f, protocol=pkl.HIGHEST_PROTOCOL)
+
     wandb.log(res)
     wandb.finish()
     print(res)
